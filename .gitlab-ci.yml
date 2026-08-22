@@ -7,8 +7,8 @@ stages:
 pages:
   stage: deploy
   script:
-    - npm ci
-    - npm run build
+    - bun i
+    - bun run build
     - rm -rf public
     - mv dist public # Vite собирает файлы в папку dist, переименовываем ее в public
   artifacts:
