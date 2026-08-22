@@ -1,0 +1,18 @@
+image: node:20-alpine
+
+stages:
+  - build
+  - deploy
+
+pages:
+  stage: deploy
+  script:
+    - npm ci
+    - npm run build
+    - rm -rf public
+    - mv dist public # Vite собирает файлы в папку dist, переименовываем ее в public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH # Публикация только из главной ветки (main/master)
