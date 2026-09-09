@@ -13,9 +13,12 @@ const ModalProducts = () => {
 			<div className='flex items-center gap-3 flex-wrap'>
 				{products?.map((product) => {
 					return (
-						<div>
+						<div key={product.id}>
 							<div className='flex flex-col items-center gap-3'>
-								<img key={product.id} src={product.thumbnail} alt={product.title} width={120} height={120} />
+								{product.thumbnail && (
+									<img src={product.thumbnail} alt={product.title} width={120} height={120} />
+								)}
+								<p>{product.title}</p>
 								<p>{product.price}$</p>
 							</div>
 							<button className='border border-red-600 rounded-2xl w-full px-2 py-0.5' onClick={() => {
