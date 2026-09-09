@@ -22,7 +22,7 @@ export const shoppingCartSlice = createSlice({
 			}
 			state.products.push(action.payload)
 			state.length = state.products.length
-			console.log('Було додано до корзини: ' + action.payload.title)
+			console.log('Added to cart: ' + action.payload.title)
 		},
 		removeProductById: (state, action: PayloadAction<number>) => {
 			if (state.products) {
